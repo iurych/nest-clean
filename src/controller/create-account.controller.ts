@@ -1,12 +1,15 @@
 import { Body, ConflictException, Controller, Post } from '@nestjs/common'
 import { hash } from 'bcryptjs'
 import { PrismaService } from 'src/prisma/prisma.service'
+import { z } from 'zod'
 
-interface CreateAccountRequest {
-  name: string
-  email: string
-  password: string
-}
+const CreateAccountRequestSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  password: z.string().min(5),
+})
+
+type CreateAccountRequest = z.infer<typeof CreateAccountRequestSchema>
 
 @Controller('/accounts')
 export class CreationAccountController {
@@ -14,7 +17,7 @@ export class CreationAccountController {
 
   @Post()
   async handle(@Body() body: CreateAccountRequest) {
-    const { name, email, password } = body
+    const { name, email, password } = CreateAccountRequestSchema.parse(body)
 
     const duplicateEmail = await this.prisma.user.findUnique({
       where: { email },
