@@ -30,6 +30,9 @@ lerna-debug.log*
 # Env
 .env
 
+# Keys
+*_key.pem
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
