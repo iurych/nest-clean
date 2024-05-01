@@ -9,7 +9,7 @@ const bodyTokenSchema = z.object({
   sub: z.string().uuid(),
 })
 
-type BodyTokenType = z.infer<typeof bodyTokenSchema>
+export type BodyTokenType = z.infer<typeof bodyTokenSchema>
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
