@@ -1,8 +1,8 @@
+import { BodyTokenType } from '@/auth/jwt.strategy'
+import { CurrentUser } from '@/decorators/current-user-decorator'
+import { PrismaService } from '@/prisma/prisma.service'
 import { Body, Controller, Post, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
-import { BodyTokenType } from 'src/auth/jwt.strategy'
-import { CurrentUser } from 'src/decorators/current-user-decorator'
-import { PrismaService } from 'src/prisma/prisma.service'
 import { z } from 'zod'
 import { ZodValidationPipe } from './pipes/zod-validation-pipe'
 

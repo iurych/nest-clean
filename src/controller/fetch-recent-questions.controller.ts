@@ -1,6 +1,6 @@
+import { PrismaService } from '@/prisma/prisma.service'
 import { Controller, Get, Query, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
-import { PrismaService } from 'src/prisma/prisma.service'
 import { z } from 'zod'
 import { ZodValidationPipe } from './pipes/zod-validation-pipe'
 
